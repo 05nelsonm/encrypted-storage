@@ -1,0 +1,3 @@
+include ':encrypted-storage'
+include ':demo'
+rootProject.name = "Encrypted Storage"

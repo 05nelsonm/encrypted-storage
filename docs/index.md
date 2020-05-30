@@ -1,9 +1,9 @@
-# encrypted-storage
+# EncryptedStorage
 An Android library for creating encrypted Files and SharedPreferences
 
-## [https://05nelsonm.github.io/encrypted-storage](https://05nelsonm.github.io/encrypted-storage)
+## [Get started!](get_started.md)
 
-## License
+## License <a href="https://github.com/05nelsonm/encrypted-storage/blob/master/LICENSE" target="_blank">:material-link-box-variant-outline:</a>
 
 Copyright &copy; 2020  Matthew Nelson
 
