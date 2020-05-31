@@ -2,7 +2,7 @@
 
 # openFileInput
 
-`fun openFileInput(): `[`FileInputStream`](https://docs.oracle.com/javase/6/docs/api/java/io/FileInputStream.html) [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L442)
+`fun openFileInput(): `[`FileInputStream`](https://docs.oracle.com/javase/6/docs/api/java/io/FileInputStream.html) [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L441)
 
 Opens a FileInputStream that reads encrypted files based on the previous settings.
 
@@ -16,5 +16,5 @@ will cause failures.
 `java.io.IOException` - when the file already exists or is not available for writing
 
 **Return**
-[FileInputStream](https://docs.oracle.com/javase/6/docs/api/java/io/FileInputStream.html)
+[FileInputStream](https://docs.oracle.com/javase/6/docs/api/java/io/FileInputStream.html) The input stream to read previously encrypted data.
 

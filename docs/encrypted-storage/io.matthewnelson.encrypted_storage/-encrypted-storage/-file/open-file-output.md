@@ -2,7 +2,7 @@
 
 # openFileOutput
 
-`fun openFileOutput(): `[`FileOutputStream`](https://docs.oracle.com/javase/6/docs/api/java/io/FileOutputStream.html) [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L456)
+`fun openFileOutput(): `[`FileOutputStream`](https://docs.oracle.com/javase/6/docs/api/java/io/FileOutputStream.html) [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L455)
 
 Opens a FileOutputStream for writing that automatically encrypts the data based on the
 provided settings.
@@ -17,5 +17,5 @@ will cause failures.
 `java.io.IOException` - when the file already exists or is not available for writing
 
 **Return**
-[FileOutputStream](https://docs.oracle.com/javase/6/docs/api/java/io/FileOutputStream.html)
+The [FileOutputStream](https://docs.oracle.com/javase/6/docs/api/java/io/FileOutputStream.html) that encrypts all data.
 

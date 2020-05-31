@@ -2,7 +2,7 @@
 
 # File
 
-`class File` [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L346)
+`class File : `[`EncryptedStorage`](../index.md) [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L345)
 
 Helper class for creating encrypted Files.
 
