@@ -9,7 +9,7 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 
 /**
- * A wrapper to the `androidx.security:security-crypto` library
+ * A wrapper to the `androidx.security:security-crypto` library.
  * */
 sealed class EncryptedStorage {
 
@@ -433,7 +433,7 @@ sealed class EncryptedStorage {
          * Please ensure that the same master key and keyset are  used to decrypt or it
          * will cause failures.
          *
-         * @return [FileInputStream]
+         * @return [FileInputStream] The input stream to read previously encrypted data.
          *
          * @throws [java.security.GeneralSecurityException] when a bad master key or keyset has been used
          * @throws [java.io.IOException] when the file already exists or is not available for writing
@@ -447,7 +447,7 @@ sealed class EncryptedStorage {
          * Please ensure that the same master key and keyset are  used to decrypt or it
          * will cause failures.
          *
-         * @return [FileOutputStream]
+         * @return The [FileOutputStream] that encrypts all data.
          *
          * @throws [java.security.GeneralSecurityException] when a bad master key or keyset has been used
          * @throws [java.io.IOException] when the file already exists or is not available for writing
