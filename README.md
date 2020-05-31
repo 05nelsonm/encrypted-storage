@@ -1,4 +1,4 @@
-# encrypted-storage
+# EncryptedStorage Android Library
 An Android library for creating encrypted Files and SharedPreferences
 
 ## [https://05nelsonm.github.io/encrypted-storage](https://05nelsonm.github.io/encrypted-storage)
