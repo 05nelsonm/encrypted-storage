@@ -6,6 +6,7 @@ An Android library for creating encrypted Files and SharedPreferences
 ## Other Projects Using It
 <!-- Example (copy between the brackets [] below): -->
 <!-- [- <a href="https://your.project.website.com" target="_blank">Your Project's Name</a>] -->
+
 - <a href="https://05nelsonm.github.io/pin-authentication/" target="_blank">PinAuthentication Android Library</a>
 
 !!! Info
