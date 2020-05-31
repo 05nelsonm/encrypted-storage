@@ -8,12 +8,8 @@ import androidx.security.crypto.MasterKeys
 import java.io.FileInputStream
 import java.io.FileOutputStream
 
-fun t(context: Context) {
-    val t = EncryptedStorage.File.createEncrypted(java.io.File(context.filesDir.absolutePath), context)
-}
-
 /**
- * A wrapper to the `androidx.security:security-crypto` library
+ * A wrapper to the `androidx.security:security-crypto` library.
  * */
 sealed class EncryptedStorage {
 
@@ -24,7 +20,7 @@ sealed class EncryptedStorage {
      * See [Prefs.Companion.createEncrypted] and [Prefs.Companion.createUnencrypted] for
      * instantiation methods.
      * */
-    class Prefs private constructor(val prefsName: String, private val context: Context) {
+    class Prefs private constructor(val prefsName: String, private val context: Context): EncryptedStorage() {
 
         private lateinit var ANDX_SECURITY_KEY_KEYSET: String
         private lateinit var ANDX_SECURITY_VALUE_KEYSET: String
@@ -225,8 +221,10 @@ sealed class EncryptedStorage {
          * of [Prefs], it will ensure that the encryption keys are replaced after
          * clearing everything else (this is due to the androidx security-crypto's
          * lack of implementation of this API call).
+         *
+         * @return [Prefs] for chaining multiple method calls together.
          * */
-        fun clear() {
+        fun clear(): Prefs {
             if (::ANDX_SECURITY_KEY_KEYSET.isInitialized) {
                 val clearTextPrefs = context.getSharedPreferences(prefsName, Context.MODE_PRIVATE)
                 val keyKeyset = clearTextPrefs.getString(ANDX_SECURITY_KEY_KEYSET, INVALID_STRING)
@@ -255,13 +253,14 @@ sealed class EncryptedStorage {
                     prefs.edit().clear().apply()
                 }
             }
+            return this
         }
 
         /**
          * Removes the key value pair associated with the defined key.
          * @param [key] String
          *
-         * @return [Prefs] for chaining multiple method calls together
+         * @return [Prefs] for chaining multiple method calls together.
          * */
         fun remove(key: String): Prefs {
             if (!prefs.edit().remove(key).commit()) {
@@ -348,7 +347,7 @@ sealed class EncryptedStorage {
         context: Context,
         val keysetAlias: String?,
         val keysetPrefName: String?
-    ) {
+    ): EncryptedStorage() {
 
         companion object {
 
@@ -434,7 +433,7 @@ sealed class EncryptedStorage {
          * Please ensure that the same master key and keyset are  used to decrypt or it
          * will cause failures.
          *
-         * @return [FileInputStream]
+         * @return [FileInputStream] The input stream to read previously encrypted data.
          *
          * @throws [java.security.GeneralSecurityException] when a bad master key or keyset has been used
          * @throws [java.io.IOException] when the file already exists or is not available for writing
@@ -448,7 +447,7 @@ sealed class EncryptedStorage {
          * Please ensure that the same master key and keyset are  used to decrypt or it
          * will cause failures.
          *
-         * @return [FileOutputStream]
+         * @return The [FileOutputStream] that encrypts all data.
          *
          * @throws [java.security.GeneralSecurityException] when a bad master key or keyset has been used
          * @throws [java.io.IOException] when the file already exists or is not available for writing
