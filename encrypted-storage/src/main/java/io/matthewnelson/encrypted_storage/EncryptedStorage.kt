@@ -20,7 +20,7 @@ sealed class EncryptedStorage {
      * See [Prefs.Companion.createEncrypted] and [Prefs.Companion.createUnencrypted] for
      * instantiation methods.
      * */
-    class Prefs private constructor(val prefsName: String, private val context: Context) {
+    class Prefs private constructor(val prefsName: String, private val context: Context): EncryptedStorage() {
 
         private lateinit var ANDX_SECURITY_KEY_KEYSET: String
         private lateinit var ANDX_SECURITY_VALUE_KEYSET: String
@@ -347,7 +347,7 @@ sealed class EncryptedStorage {
         context: Context,
         val keysetAlias: String?,
         val keysetPrefName: String?
-    ) {
+    ): EncryptedStorage() {
 
         companion object {
 
