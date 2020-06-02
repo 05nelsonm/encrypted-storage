@@ -7,7 +7,7 @@ Get Started
 ## Implementation
  - In your App module's `build.gradle` file, add the following to the `dependencies` block:
  ```groovy
- implementation 'com.github.05nelsonm:encrypted-storage:{{ encrypted_storage.release }}'
+ implementation 'io.matthewnelson.encrypted-storage:encrypted-storage:{{ encrypted_storage.release }}'
  ```
 
  - Instantiation
