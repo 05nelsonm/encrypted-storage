@@ -11,7 +11,7 @@ import java.io.FileOutputStream
 /**
  * A wrapper to the `androidx.security:security-crypto` library.
  * */
-sealed class EncryptedStorage {
+class EncryptedStorage private constructor() {
 
     /**
      * SharedPreferences helper class that allows for instantiation of either regular
@@ -20,7 +20,7 @@ sealed class EncryptedStorage {
      * See [Prefs.Companion.createEncrypted] and [Prefs.Companion.createUnencrypted] for
      * instantiation methods.
      * */
-    class Prefs private constructor(val prefsName: String, private val context: Context): EncryptedStorage() {
+    class Prefs private constructor(val prefsName: String, private val context: Context) {
 
         private lateinit var ANDX_SECURITY_KEY_KEYSET: String
         private lateinit var ANDX_SECURITY_VALUE_KEYSET: String
@@ -49,9 +49,8 @@ sealed class EncryptedStorage {
         }
 
         init {
-            if (!::ANDX_SECURITY_KEY_KEYSET.isInitialized) {
+            if (!::ANDX_SECURITY_KEY_KEYSET.isInitialized)
                 prefs = context.getSharedPreferences(prefsName, Context.MODE_PRIVATE)
-            }
         }
 
         companion object {
@@ -102,8 +101,7 @@ sealed class EncryptedStorage {
          * */
         fun registerOnSharedPreferenceChangeListener(
             listener: SharedPreferences.OnSharedPreferenceChangeListener
-        ) =
-            prefs.registerOnSharedPreferenceChangeListener(listener)
+        ) = prefs.registerOnSharedPreferenceChangeListener(listener)
 
         /**
          * Unregisters an onChangeListener for SharedPreferences.
@@ -112,8 +110,7 @@ sealed class EncryptedStorage {
          * */
         fun unregisterOnSharedPreferenceChangeListener(
             listener: SharedPreferences.OnSharedPreferenceChangeListener
-        ) =
-            prefs.unregisterOnSharedPreferenceChangeListener(listener)
+        ) = prefs.unregisterOnSharedPreferenceChangeListener(listener)
 
         ///////////////////////
         // Read Shared Prefs //
@@ -150,11 +147,10 @@ sealed class EncryptedStorage {
          * @throws [ClassCastException]
          * */
         fun read(key: String): Boolean? =
-            if (contains(key)) {
+            if (contains(key))
                 read(key, INVALID_BOOLEAN)
-            } else {
+            else
                 null
-            }
 
         /**
          * Boolean
@@ -263,9 +259,8 @@ sealed class EncryptedStorage {
          * @return [Prefs] for chaining multiple method calls together.
          * */
         fun remove(key: String): Prefs {
-            if (!prefs.edit().remove(key).commit()) {
+            if (!prefs.edit().remove(key).commit())
                 prefs.edit().remove(key).apply()
-            }
             return this
         }
 
@@ -273,9 +268,8 @@ sealed class EncryptedStorage {
          * Boolean
          * */
         fun write(key: String, value: Boolean): Prefs {
-            if (!prefs.edit().putBoolean(key, value).commit()) {
+            if (!prefs.edit().putBoolean(key, value).commit())
                 prefs.edit().putBoolean(key, value).apply()
-            }
             return this
         }
 
@@ -283,9 +277,8 @@ sealed class EncryptedStorage {
          * Float
          * */
         fun write(key: String, value: Float): Prefs {
-            if (!prefs.edit().putFloat(key, value).commit()) {
+            if (!prefs.edit().putFloat(key, value).commit())
                 prefs.edit().putFloat(key, value).apply()
-            }
             return this
         }
 
@@ -293,9 +286,8 @@ sealed class EncryptedStorage {
          * Int
          * */
         fun write(key: String, value: Int): Prefs {
-            if (!prefs.edit().putInt(key, value).commit()) {
+            if (!prefs.edit().putInt(key, value).commit())
                 prefs.edit().putInt(key, value).apply()
-            }
             return this
         }
 
@@ -303,9 +295,8 @@ sealed class EncryptedStorage {
          * Long
          * */
         fun write(key: String, value: Long): Prefs {
-            if (!prefs.edit().putLong(key, value).commit()) {
+            if (!prefs.edit().putLong(key, value).commit())
                 prefs.edit().putLong(key, value).apply()
-            }
             return this
         }
 
@@ -313,9 +304,8 @@ sealed class EncryptedStorage {
          * Set<String>
          * */
         fun write(key: String, value: Set<String>): Prefs {
-            if (!prefs.edit().putStringSet(key, value).commit()) {
+            if (!prefs.edit().putStringSet(key, value).commit())
                 prefs.edit().putStringSet(key, value).apply()
-            }
             return this
         }
 
@@ -330,9 +320,8 @@ sealed class EncryptedStorage {
          * @return [Prefs] for chaining multiple method calls together.
          * */
         fun write(key: String, value: String): Prefs {
-            if (!prefs.edit().putString(key, value).commit()) {
+            if (!prefs.edit().putString(key, value).commit())
                 prefs.edit().putString(key, value).apply()
-            }
             return this
         }
     }
@@ -347,37 +336,26 @@ sealed class EncryptedStorage {
         context: Context,
         val keysetAlias: String?,
         val keysetPrefName: String?
-    ): EncryptedStorage() {
+    ) {
 
         companion object {
 
             /**
              * Required fields only
              * */
-            fun createEncrypted(
-                file: java.io.File,
-                context: Context
-            ): File =
+            fun createEncrypted(file: java.io.File, context: Context): File =
                 File(file, context, null, null)
 
             /**
              * Required fields + custom keysetAlias
              * */
-            fun createEncrypted(
-                file: java.io.File,
-                context: Context,
-                keysetAlias: String
-            ): File =
+            fun createEncrypted(file: java.io.File, context: Context, keysetAlias: String): File =
                 File(file, context, keysetAlias, null)
 
             /**
              * Required fields + custom keysetPrefName
              * */
-            fun createEncrypted(
-                file: java.io.File,
-                keysetPrefName: String,
-                context: Context
-            ): File =
+            fun createEncrypted(file: java.io.File, keysetPrefName: String, context: Context): File =
                 File(file, context, null, keysetPrefName)
 
             /**
@@ -411,12 +389,13 @@ sealed class EncryptedStorage {
             keysetAlias: String?,
             keysetPrefName: String?
         ): EncryptedFile {
-            val encryptedFileBuilder = EncryptedFile.Builder(
-                file,
-                context,
-                MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC),
-                EncryptedFile.FileEncryptionScheme.AES256_GCM_HKDF_4KB
-            )
+            val encryptedFileBuilder =
+                EncryptedFile.Builder(
+                    file,
+                    context,
+                    MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC),
+                    EncryptedFile.FileEncryptionScheme.AES256_GCM_HKDF_4KB
+                )
 
             if (keysetAlias != null)
                 encryptedFileBuilder.setKeysetAlias(keysetAlias)
@@ -453,6 +432,5 @@ sealed class EncryptedStorage {
          * @throws [java.io.IOException] when the file already exists or is not available for writing
          * */
         fun openFileOutput(): FileOutputStream = encryptedFile.openFileOutput()
-
     }
 }
