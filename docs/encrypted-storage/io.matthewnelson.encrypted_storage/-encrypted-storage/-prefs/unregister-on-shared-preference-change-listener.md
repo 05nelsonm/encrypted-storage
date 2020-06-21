@@ -2,7 +2,7 @@
 
 # unregisterOnSharedPreferenceChangeListener
 
-`fun unregisterOnSharedPreferenceChangeListener(listener: `[`OnSharedPreferenceChangeListener`](https://developer.android.com/reference/android/content/SharedPreferences/OnSharedPreferenceChangeListener.html)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L113)
+`fun unregisterOnSharedPreferenceChangeListener(listener: `[`OnSharedPreferenceChangeListener`](https://developer.android.com/reference/android/content/SharedPreferences/OnSharedPreferenceChangeListener.html)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L111)
 
 Unregisters an onChangeListener for SharedPreferences.
 

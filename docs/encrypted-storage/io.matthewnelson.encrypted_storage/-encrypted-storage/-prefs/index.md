@@ -2,7 +2,7 @@
 
 # Prefs
 
-`class Prefs : `[`EncryptedStorage`](../index.md) [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L23)
+`class Prefs` [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L23)
 
 SharedPreferences helper class that allows for instantiation of either regular
 cleartext SharedPreferences, or EncryptedSharedPreferences.

@@ -2,7 +2,7 @@
 
 # EncryptedStorage
 
-`sealed class EncryptedStorage` [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L14)
+`class EncryptedStorage` [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L14)
 
 A wrapper to the `androidx.security:security-crypto` library.
 
@@ -10,5 +10,5 @@ A wrapper to the `androidx.security:security-crypto` library.
 
 | Name | Summary |
 |---|---|
-| [File](-file/index.md) | Helper class for creating encrypted Files.`class File : `[`EncryptedStorage`](./index.md) |
-| [Prefs](-prefs/index.md) | SharedPreferences helper class that allows for instantiation of either regular cleartext SharedPreferences, or EncryptedSharedPreferences.`class Prefs : `[`EncryptedStorage`](./index.md) |
+| [File](-file/index.md) | Helper class for creating encrypted Files.`class File` |
+| [Prefs](-prefs/index.md) | SharedPreferences helper class that allows for instantiation of either regular cleartext SharedPreferences, or EncryptedSharedPreferences.`class Prefs` |

@@ -6,4 +6,4 @@
 
 | Name | Summary |
 |---|---|
-| [EncryptedStorage](-encrypted-storage/index.md) | A wrapper to the `androidx.security:security-crypto` library.`sealed class EncryptedStorage` |
+| [EncryptedStorage](-encrypted-storage/index.md) | A wrapper to the `androidx.security:security-crypto` library.`class EncryptedStorage` |

@@ -2,7 +2,7 @@
 
 # openFileInput
 
-`fun openFileInput(): `[`FileInputStream`](https://docs.oracle.com/javase/6/docs/api/java/io/FileInputStream.html) [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L441)
+`fun openFileInput(): `[`FileInputStream`](https://docs.oracle.com/javase/6/docs/api/java/io/FileInputStream.html) [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L420)
 
 Opens a FileInputStream that reads encrypted files based on the previous settings.
 
