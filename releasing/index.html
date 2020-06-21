@@ -406,19 +406,19 @@
 <p>Create a local release branch from <code>master</code>
 <div class="highlight"><pre><span></span><code>git checkout master
 git pull
-git checkout -b release_1.0.2
+git checkout -b release_1.0.3
 </code></pre></div></p>
 </li>
 <li>
 <p>Update <code>VERSION_NAME</code> (remove <code>-SNAPSHOT</code>) in <code>gradle.properties</code>
-<div class="highlight"><pre><span></span><code>VERSION_NAME=1.0.2
+<div class="highlight"><pre><span></span><code>VERSION_NAME=1.0.3
 </code></pre></div></p>
 </li>
 <li>
 <p>Update the current version and next version in <code>mkdocs.yml</code>
 <div class="highlight"><pre><span></span><code>extra:
   encrypted_storage:
-    release: &#39;1.0.2&#39;
+    release: &#39;1.0.3&#39;
     next_release: &#39;REPLACE_WITH_NEXT_VERSION_NUMBER&#39;
 </code></pre></div></p>
 </li>
@@ -431,7 +431,7 @@ git checkout -b release_1.0.2
 <li>
 <p>Update <code>docs/changelog.md</code> after checking out all changes:</p>
 <ul>
-<li><a href="https://github.com/05nelsonm/encrypted-storage/compare/1.0.1...master" target="_blank">compare changes</a></li>
+<li><a href="https://github.com/05nelsonm/encrypted-storage/compare/1.0.2...master" target="_blank">compare changes</a></li>
 </ul>
 </li>
 <li>
@@ -441,7 +441,7 @@ git checkout -b release_1.0.2
 </li>
 <li>
 <p>Commit all local changes and PGP sign
-<div class="highlight"><pre><span></span><code>git commit -S -am &quot;Prepare 1.0.2 release&quot;
+<div class="highlight"><pre><span></span><code>git commit -S -am &quot;Prepare 1.0.3 release&quot;
 </code></pre></div></p>
 </li>
 <li>
@@ -452,8 +452,8 @@ git checkout -b release_1.0.2
 </li>
 <li>
 <p>Create a PGP signed tag, and push it
-<div class="highlight"><pre><span></span><code>git tag -s 1.0.2 -m &quot;Release v1.0.2&quot;
-git push origin 1.0.2
+<div class="highlight"><pre><span></span><code>git tag -s 1.0.3 -m &quot;Release v1.0.3&quot;
+git push origin 1.0.3
 </code></pre></div></p>
 </li>
 <li>
@@ -486,7 +486,7 @@ signing.gnupg.keyName=0x61471B8AB3890961
 <p>Merge the release branch to master
 <div class="highlight"><pre><span></span><code>git checkout master
 git pull
-git merge --no-ff -S release_1.0.2
+git merge --no-ff -S release_1.0.3
 </code></pre></div></p>
 </li>
 <li>
@@ -516,7 +516,7 @@ VERSION_CODE=INCREMENT
 </ul>
 </li>
 <li>Go to the <a href="https://github.com/05nelsonm/encrypted-storage/releases/new" target="_blank">Draft a new release</a> page,
-  enter the release name (1.0.2) as tag and title, and have the description
+  enter the release name (1.0.3) as tag and title, and have the description
   point to the changelog. You can find the direct anchor URL from the
   <a href="https://05nelsonm.github.io/encrypted-storage/changelog" target="_blank">Change Log</a>
   page on the doc site.</li>
