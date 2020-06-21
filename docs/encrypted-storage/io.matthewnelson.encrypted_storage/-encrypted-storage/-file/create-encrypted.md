@@ -2,19 +2,19 @@
 
 # createEncrypted
 
-`fun createEncrypted(file: `[`File`](https://docs.oracle.com/javase/6/docs/api/java/io/File.html)`, context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`): File` [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L357)
+`fun createEncrypted(file: `[`File`](https://docs.oracle.com/javase/6/docs/api/java/io/File.html)`, context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`): File` [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L346)
 
 Required fields only
 
-`fun createEncrypted(file: `[`File`](https://docs.oracle.com/javase/6/docs/api/java/io/File.html)`, context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`, keysetAlias: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): File` [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L366)
+`fun createEncrypted(file: `[`File`](https://docs.oracle.com/javase/6/docs/api/java/io/File.html)`, context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`, keysetAlias: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): File` [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L352)
 
 Required fields + custom keysetAlias
 
-`fun createEncrypted(file: `[`File`](https://docs.oracle.com/javase/6/docs/api/java/io/File.html)`, keysetPrefName: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`): File` [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L376)
+`fun createEncrypted(file: `[`File`](https://docs.oracle.com/javase/6/docs/api/java/io/File.html)`, keysetPrefName: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`): File` [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L358)
 
 Required fields + custom keysetPrefName
 
-`fun createEncrypted(file: `[`File`](https://docs.oracle.com/javase/6/docs/api/java/io/File.html)`, context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`, keysetAlias: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, keysetPrefName: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): File` [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L397)
+`fun createEncrypted(file: `[`File`](https://docs.oracle.com/javase/6/docs/api/java/io/File.html)`, context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`, keysetAlias: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, keysetPrefName: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): File` [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/EncryptedStorage.kt#L375)
 
 Required: [file](create-encrypted.md#io.matthewnelson.encrypted_storage.EncryptedStorage.File.Companion$createEncrypted(java.io.File, android.content.Context, kotlin.String, kotlin.String)/file), [context](create-encrypted.md#io.matthewnelson.encrypted_storage.EncryptedStorage.File.Companion$createEncrypted(java.io.File, android.content.Context, kotlin.String, kotlin.String)/context)
 Optional: [keysetAlias](create-encrypted.md#io.matthewnelson.encrypted_storage.EncryptedStorage.File.Companion$createEncrypted(java.io.File, android.content.Context, kotlin.String, kotlin.String)/keysetAlias), [keysetPrefName](create-encrypted.md#io.matthewnelson.encrypted_storage.EncryptedStorage.File.Companion$createEncrypted(java.io.File, android.content.Context, kotlin.String, kotlin.String)/keysetPrefName)
