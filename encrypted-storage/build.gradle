@@ -15,6 +15,7 @@ android {
         versionName VERSION_NAME
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArguments disableAnalytics: 'true'
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -52,6 +53,8 @@ dokka {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
+    // https://developer.android.com/jetpack/androidx/releases/security#security-crypto-1.0.0-rc02
+    // NOTE: Hold version bump until 1.1.0 is out of alpha.
     implementation 'androidx.security:security-crypto:1.0.0-rc02'
 
     testImplementation 'junit:junit:4.12'
