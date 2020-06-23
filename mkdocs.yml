@@ -17,7 +17,7 @@ extra:
       link: https://medium.com/@matthewnelson.io
 
 site_name: EncryptedStorage
-site_url: https://05nelsonm.github.io/encrypted-storage
+site_url: https://encrypted-storage.matthewnelson.io
 repo_name: EncryptedStorage
 repo_url: https://github.com/05nelsonm/encrypted-storage
 site_description: "An Android library for creating encrypted Files and SharedPreferences."
