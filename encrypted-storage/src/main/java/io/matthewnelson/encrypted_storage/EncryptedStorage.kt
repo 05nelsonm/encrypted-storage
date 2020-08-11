@@ -101,7 +101,9 @@ class EncryptedStorage private constructor() {
          * */
         fun registerOnSharedPreferenceChangeListener(
             listener: SharedPreferences.OnSharedPreferenceChangeListener
-        ) = prefs.registerOnSharedPreferenceChangeListener(listener)
+        ) {
+            prefs.registerOnSharedPreferenceChangeListener(listener)
+        }
 
         /**
          * Unregisters an onChangeListener for SharedPreferences.
@@ -110,7 +112,9 @@ class EncryptedStorage private constructor() {
          * */
         fun unregisterOnSharedPreferenceChangeListener(
             listener: SharedPreferences.OnSharedPreferenceChangeListener
-        ) = prefs.unregisterOnSharedPreferenceChangeListener(listener)
+        ) {
+            prefs.unregisterOnSharedPreferenceChangeListener(listener)
+        }
 
         ///////////////////////
         // Read Shared Prefs //
