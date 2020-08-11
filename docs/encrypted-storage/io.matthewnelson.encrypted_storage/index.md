@@ -6,4 +6,5 @@
 
 | Name | Summary |
 |---|---|
-| [EncryptedStorage](-encrypted-storage/index.md) | A wrapper to the `androidx.security:security-crypto` library.`class EncryptedStorage` |
+| [EFile](-e-file/index.md) | Helper class for creating encrypted Files.`class EFile` |
+| [Prefs](-prefs/index.md) | SharedPreferences helper class that allows for instantiation of either regular cleartext SharedPreferences, or EncryptedSharedPreferences.`class Prefs` |

@@ -1,9 +1,11 @@
 package io.matthewnelson.encrypted_storage
 
+import android.content.Context
 import android.content.SharedPreferences
-import io.matthewnelson.encrypted_storage.EncryptedStorage.Prefs
 import androidx.test.core.app.ApplicationProvider
+import io.matthewnelson.fake_keystore.FakeAndroidKeyStore
 import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -16,9 +18,12 @@ import kotlin.test.assertNotEquals
 class PrefsUnitTest {
 
     private lateinit var prefs: Prefs
+    private lateinit var ePrefs: Prefs
+    private val appContext = ApplicationProvider.getApplicationContext<Context>()
 
     private companion object {
         const val PREFS = "PREFS"
+        const val ENCRYPTED_PREFS = "ENCRYPTED_PREFS"
 
         const val BOOLEAN_KEY = "BOOLEAN_KEY"
         const val FLOAT_KEY = "FLOAT_KEY"
@@ -26,15 +31,37 @@ class PrefsUnitTest {
         const val LONG_KEY = "LONG_KEY"
         const val SET_STRING_KEY = "SET_STRING_KEY"
         const val STRING_KEY = "STRING"
+
+        @JvmStatic
+        @BeforeClass
+        fun beforeClass() {
+            FakeAndroidKeyStore.setup
+        }
     }
 
     @Before
     fun setup() {
-        prefs = Prefs.createUnencrypted(PREFS, ApplicationProvider.getApplicationContext())
+        prefs = Prefs.createUnencrypted(PREFS, appContext)
+        ePrefs = Prefs.createEncrypted(ENCRYPTED_PREFS, appContext)
     }
 
     @Test
-    fun testBooleans() {
+    fun testBooleans_unencrypted() {
+        testBooleans(prefs)
+    }
+
+    @Test(expected = ClassCastException::class)
+    fun testBooleans_unencrypted_classCastException() {
+        prefs.write(BOOLEAN_KEY, STRING_KEY)
+            .read(BOOLEAN_KEY, Prefs.INVALID_BOOLEAN)
+    }
+
+    @Test
+    fun testBooleans_encrypted() {
+        testBooleans(ePrefs)
+    }
+
+    private fun testBooleans(prefs: Prefs) {
         var result: Boolean? = prefs.write(BOOLEAN_KEY, true)
             .read(BOOLEAN_KEY, Prefs.INVALID_BOOLEAN)
         assertEquals(true, result)
@@ -50,14 +77,23 @@ class PrefsUnitTest {
         assertEquals(false, result)
     }
 
+    @Test
+    fun testFloats_unencrypted() {
+        testFloats(prefs)
+    }
+
     @Test(expected = ClassCastException::class)
-    fun testBooleans_classCastException() {
-        prefs.write(BOOLEAN_KEY, STRING_KEY)
-            .read(BOOLEAN_KEY, Prefs.INVALID_BOOLEAN)
+    fun testFloats_unencrypted_classCastException() {
+        prefs.write(FLOAT_KEY, STRING_KEY)
+            .read(FLOAT_KEY, Prefs.INVALID_FLOAT)
     }
 
     @Test
-    fun testFloats() {
+    fun testFloats_encrypted() {
+        testFloats(ePrefs)
+    }
+
+    private fun testFloats(prefs: Prefs) {
         var result = prefs
             .write(FLOAT_KEY, 1F)
             .read(FLOAT_KEY, Prefs.INVALID_FLOAT)
@@ -69,14 +105,23 @@ class PrefsUnitTest {
         assertEquals(Prefs.INVALID_FLOAT, result)
     }
 
+    @Test
+    fun testInts_unencrypted() {
+        testInts(prefs)
+    }
+
     @Test(expected = ClassCastException::class)
-    fun testFloats_classCastException() {
-        prefs.write(FLOAT_KEY, STRING_KEY)
-            .read(FLOAT_KEY, Prefs.INVALID_FLOAT)
+    fun testInts_unencrypted_classCastException() {
+        prefs.write(INT_KEY, STRING_KEY)
+            .read(INT_KEY, Prefs.INVALID_INT)
     }
 
     @Test
-    fun testInts() {
+    fun testInts_encrypted() {
+        testInts(ePrefs)
+    }
+
+    private fun testInts(prefs: Prefs) {
         var result = prefs
             .write(INT_KEY, 1)
             .read(INT_KEY, Prefs.INVALID_INT)
@@ -88,14 +133,23 @@ class PrefsUnitTest {
         assertEquals(Prefs.INVALID_INT, result)
     }
 
+    @Test
+    fun testLongs_unencrypted() {
+        testLongs(prefs)
+    }
+
     @Test(expected = ClassCastException::class)
-    fun testInts_classCastException() {
-        prefs.write(INT_KEY, STRING_KEY)
-            .read(INT_KEY, Prefs.INVALID_INT)
+    fun testLongs_unencrypted_classCastException() {
+        prefs.write(LONG_KEY, STRING_KEY)
+            .read(LONG_KEY, Prefs.INVALID_LONG)
     }
 
     @Test
-    fun testLongs() {
+    fun testLongs_encrypted() {
+        testLongs(ePrefs)
+    }
+
+    private fun testLongs(prefs: Prefs) {
         var result = prefs
             .write(LONG_KEY, 1L)
             .read(LONG_KEY, Prefs.INVALID_LONG)
@@ -107,14 +161,23 @@ class PrefsUnitTest {
         assertEquals(Prefs.INVALID_LONG, result)
     }
 
+    @Test
+    fun testStrings_unencrypted() {
+        testStrings(prefs)
+    }
+
     @Test(expected = ClassCastException::class)
-    fun testLongs_classCastException() {
-        prefs.write(LONG_KEY, STRING_KEY)
-            .read(LONG_KEY, Prefs.INVALID_LONG)
+    fun testStrings_unencrypted_classCastException() {
+        prefs.write(STRING_KEY, 1L)
+            .read(STRING_KEY, Prefs.INVALID_STRING)
     }
 
     @Test
-    fun testStrings() {
+    fun testStrings_encrypted() {
+        testStrings(ePrefs)
+    }
+
+    private fun testStrings(prefs: Prefs) {
         var result = prefs
             .write(STRING_KEY, STRING_KEY)
             .read(STRING_KEY, Prefs.INVALID_STRING)
@@ -126,14 +189,23 @@ class PrefsUnitTest {
         assertEquals(Prefs.INVALID_STRING, result)
     }
 
+    @Test
+    fun testStringSets_unencrypted() {
+        testStringSets(prefs)
+    }
+
     @Test(expected = ClassCastException::class)
-    fun testStrings_classCastException() {
-        prefs.write(STRING_KEY, 1L)
-            .read(STRING_KEY, Prefs.INVALID_STRING)
+    fun testStringSets_unencrypted_classCastException() {
+        prefs.write(SET_STRING_KEY, 1L)
+            .read(SET_STRING_KEY, Prefs.INVALID_STRING_SET)
     }
 
     @Test
-    fun testStringSets() {
+    fun testStringSets_encrypted() {
+        testStringSets(ePrefs)
+    }
+
+    private fun testStringSets(prefs: Prefs) {
         val setString = setOf(STRING_KEY + "_1", STRING_KEY + "_2", STRING_KEY + "_3")
         var result = prefs
             .write(SET_STRING_KEY, setString)
@@ -147,14 +219,17 @@ class PrefsUnitTest {
         assertEquals(Prefs.INVALID_STRING_SET.toString(), result.toString())
     }
 
-    @Test(expected = ClassCastException::class)
-    fun testStringSets_classCastException() {
-        prefs.write(SET_STRING_KEY, 1L)
-            .read(SET_STRING_KEY, Prefs.INVALID_STRING_SET)
+    @Test
+    fun testContains_unencrypted() {
+        testContains(prefs)
     }
 
     @Test
-    fun testContains() {
+    fun testContains_encrypted() {
+        testContains(ePrefs)
+    }
+
+    private fun testContains(prefs: Prefs) {
         var result = prefs
             .write(STRING_KEY, STRING_KEY)
             .contains(STRING_KEY)
@@ -167,7 +242,16 @@ class PrefsUnitTest {
     }
 
     @Test
-    fun testGetAll() {
+    fun testGetAll_unencrypted() {
+        testGetAll(prefs)
+    }
+
+    @Test
+    fun testGetAll_encrypted() {
+        testGetAll(ePrefs)
+    }
+
+    private fun testGetAll(prefs: Prefs) {
         val setString = setOf(STRING_KEY + "_1", STRING_KEY + "_2", STRING_KEY + "_3")
         val bool = true
         val float = 1F
@@ -200,7 +284,16 @@ class PrefsUnitTest {
     }
 
     @Test
-    fun testClear() {
+    fun testClear_unencrypted() {
+        testClear(prefs)
+    }
+
+    @Test
+    fun testClear_encrypted() {
+        testClear(ePrefs)
+    }
+
+    private fun testClear(prefs: Prefs) {
         val setString = setOf(STRING_KEY + "_1", STRING_KEY + "_2", STRING_KEY + "_3")
         prefs.write(BOOLEAN_KEY, true)
             .write(FLOAT_KEY, 1F)
@@ -219,7 +312,16 @@ class PrefsUnitTest {
     }
 
     @Test
-    fun testOnChangeListeners() {
+    fun testOnChangeListeners_unencrypted() {
+        testOnChangeListeners(prefs)
+    }
+
+    @Test
+    fun testOnChangeListeners_encrypted() {
+        testOnChangeListeners(ePrefs)
+    }
+
+    private fun testOnChangeListeners(prefs: Prefs) {
         var keyOfChange: String? = null
         var retrievedValue: Any? = null
 
@@ -243,5 +345,4 @@ class PrefsUnitTest {
         assertNotEquals(STRING_KEY, keyOfChange)
         assertNotEquals(prefs.read(STRING_KEY, Prefs.INVALID_STRING), retrievedValue)
     }
-
 }
