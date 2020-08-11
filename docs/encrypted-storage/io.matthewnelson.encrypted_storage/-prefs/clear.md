@@ -2,7 +2,7 @@
 
 # clear
 
-`fun clear(): `[`Prefs`](index.md) [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/Prefs.kt#L229)
+`fun clear(): `[`Prefs`](index.md) [(source)](https://github.com/05nelsonm/encrypted-storage/blob/master/encrypted-storage/src/main/java/io/matthewnelson/encrypted_storage/Prefs.kt#L230)
 
 Clears all data within SharedPreferences.
 
