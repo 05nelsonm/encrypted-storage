@@ -69,5 +69,5 @@ nav:
   - 'Help & Community':
       - 'Contributing':
           - 'Releasing': releasing.md
-  - 'EncryptedStorage Docs': encrypted-storage/io.matthewnelson.encrypted_storage/-encrypted-storage/index.md
+  - 'EncryptedStorage Docs': encrypted-storage/io.matthewnelson.encrypted_storage/index.md
   - 'Change Log': changelog.md
