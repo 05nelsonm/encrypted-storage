@@ -1,7 +1,7 @@
 extra:
   encrypted_storage:
-    release: '1.0.2'
-    next_release: '1.0.3'
+    release: '2.0.0'
+    next_release: '2.0.1'
   social:
     - icon: material/earth
       link: https://matthewnelson.io
