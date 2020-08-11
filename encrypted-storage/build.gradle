@@ -52,6 +52,7 @@ dokka {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     // https://developer.android.com/jetpack/androidx/releases/security#security-crypto-1.0.0-rc02
     // NOTE: Hold version bump until 1.1.0 is out of alpha.
