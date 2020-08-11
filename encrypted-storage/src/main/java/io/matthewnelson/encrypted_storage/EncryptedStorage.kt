@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedFile
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 
@@ -336,7 +337,7 @@ class EncryptedStorage private constructor() {
      * See [EFile.Companion.createEncrypted] for instantiation methods.
      * */
     class EFile private constructor(
-        val file: java.io.File,
+        val file: File,
         context: Context,
         val keysetAlias: String?,
         val keysetPrefName: String?
@@ -347,19 +348,19 @@ class EncryptedStorage private constructor() {
             /**
              * Required fields only
              * */
-            fun createEncrypted(file: java.io.File, context: Context): EFile =
+            fun createEncrypted(file: File, context: Context): EFile =
                 EFile(file, context, null, null)
 
             /**
              * Required fields + custom keysetAlias
              * */
-            fun createEncrypted(file: java.io.File, context: Context, keysetAlias: String): EFile =
+            fun createEncrypted(file: File, context: Context, keysetAlias: String): EFile =
                 EFile(file, context, keysetAlias, null)
 
             /**
              * Required fields + custom keysetPrefName
              * */
-            fun createEncrypted(file: java.io.File, keysetPrefName: String, context: Context): EFile =
+            fun createEncrypted(file: File, keysetPrefName: String, context: Context): EFile =
                 EFile(file, context, null, keysetPrefName)
 
             /**
@@ -377,7 +378,7 @@ class EncryptedStorage private constructor() {
              * @throws [java.io.IOException] when the file already exists or is not available for writing
              * */
             fun createEncrypted(
-                file: java.io.File,
+                file: File,
                 context: Context,
                 keysetAlias: String,
                 keysetPrefName: String
@@ -388,7 +389,7 @@ class EncryptedStorage private constructor() {
         private val encryptedFile = buildEncryptedFile(file, context, keysetAlias, keysetPrefName)
 
         private fun buildEncryptedFile(
-            file: java.io.File,
+            file: File,
             context: Context,
             keysetAlias: String?,
             keysetPrefName: String?
