@@ -14,7 +14,7 @@ import org.junit.runner.RunWith
 @LargeTest
 class EncryptedPrefsUnitTest {
 
-    private lateinit var prefs: EncryptedStorage.Prefs
+    private lateinit var prefs: Prefs
 
     private companion object {
         const val PREFS = "PREFS"
@@ -29,13 +29,13 @@ class EncryptedPrefsUnitTest {
 
     @Before
     fun setup() {
-        prefs = EncryptedStorage.Prefs.createEncrypted(PREFS, ApplicationProvider.getApplicationContext())
+        prefs = Prefs.createEncrypted(PREFS, ApplicationProvider.getApplicationContext())
     }
 
     @Test
     fun testBooleans() {
         var result: Boolean? = prefs.write(BOOLEAN_KEY, true)
-            .read(BOOLEAN_KEY, EncryptedStorage.Prefs.INVALID_BOOLEAN)
+            .read(BOOLEAN_KEY, Prefs.INVALID_BOOLEAN)
         assertEquals(true, result)
 
         result = prefs
@@ -53,52 +53,52 @@ class EncryptedPrefsUnitTest {
     fun testFloats() {
         var result = prefs
             .write(FLOAT_KEY, 1F)
-            .read(FLOAT_KEY, EncryptedStorage.Prefs.INVALID_FLOAT)
+            .read(FLOAT_KEY, Prefs.INVALID_FLOAT)
         assertEquals(1F, result)
 
         result = prefs
             .remove(FLOAT_KEY)
-            .read(FLOAT_KEY, EncryptedStorage.Prefs.INVALID_FLOAT)
-        assertEquals(EncryptedStorage.Prefs.INVALID_FLOAT, result)
+            .read(FLOAT_KEY, Prefs.INVALID_FLOAT)
+        assertEquals(Prefs.INVALID_FLOAT, result)
     }
 
     @Test
     fun testInts() {
         var result = prefs
             .write(INT_KEY, 1)
-            .read(INT_KEY, EncryptedStorage.Prefs.INVALID_INT)
+            .read(INT_KEY, Prefs.INVALID_INT)
         assertEquals(1, result)
 
         result = prefs
             .remove(INT_KEY)
-            .read(INT_KEY, EncryptedStorage.Prefs.INVALID_INT)
-        assertEquals(EncryptedStorage.Prefs.INVALID_INT, result)
+            .read(INT_KEY, Prefs.INVALID_INT)
+        assertEquals(Prefs.INVALID_INT, result)
     }
 
     @Test
     fun testLongs() {
         var result = prefs
             .write(LONG_KEY, 1L)
-            .read(LONG_KEY, EncryptedStorage.Prefs.INVALID_LONG)
+            .read(LONG_KEY, Prefs.INVALID_LONG)
         assertEquals(1L, result)
 
         result = prefs
             .remove(LONG_KEY)
-            .read(LONG_KEY, EncryptedStorage.Prefs.INVALID_LONG)
-        assertEquals(EncryptedStorage.Prefs.INVALID_LONG, result)
+            .read(LONG_KEY, Prefs.INVALID_LONG)
+        assertEquals(Prefs.INVALID_LONG, result)
     }
 
     @Test
     fun testStrings() {
         var result = prefs
             .write(STRING_KEY, STRING_KEY)
-            .read(STRING_KEY, EncryptedStorage.Prefs.INVALID_STRING)
+            .read(STRING_KEY, Prefs.INVALID_STRING)
         assertEquals(STRING_KEY, result)
 
         result = prefs
             .remove(STRING_KEY)
-            .read(STRING_KEY, EncryptedStorage.Prefs.INVALID_STRING)
-        assertEquals(EncryptedStorage.Prefs.INVALID_STRING, result)
+            .read(STRING_KEY, Prefs.INVALID_STRING)
+        assertEquals(Prefs.INVALID_STRING, result)
     }
 
     @Test
@@ -106,14 +106,14 @@ class EncryptedPrefsUnitTest {
         val setString = setOf(STRING_KEY + "_1", STRING_KEY + "_2", STRING_KEY + "_3")
         var result = prefs
             .write(SET_STRING_KEY, setString)
-            .read(SET_STRING_KEY, EncryptedStorage.Prefs.INVALID_STRING_SET)
+            .read(SET_STRING_KEY, Prefs.INVALID_STRING_SET)
         assertEquals(setString.toString(), result?.sorted().toString())
         assertEquals(3, result?.size)
 
         result = prefs
             .remove(SET_STRING_KEY)
-            .read(SET_STRING_KEY, EncryptedStorage.Prefs.INVALID_STRING_SET)
-        assertEquals(EncryptedStorage.Prefs.INVALID_STRING_SET.toString(), result.toString())
+            .read(SET_STRING_KEY, Prefs.INVALID_STRING_SET)
+        assertEquals(Prefs.INVALID_STRING_SET.toString(), result.toString())
     }
 
     @Test
@@ -192,7 +192,7 @@ class EncryptedPrefsUnitTest {
                 if (key == BOOLEAN_KEY) {
                     retrievedValue = sharedPreferences.getBoolean(key, false)
                 } else if (key == STRING_KEY) {
-                    retrievedValue = sharedPreferences.getString(key, EncryptedStorage.Prefs.INVALID_STRING)
+                    retrievedValue = sharedPreferences.getString(key, Prefs.INVALID_STRING)
                 }
             }
 
@@ -204,6 +204,6 @@ class EncryptedPrefsUnitTest {
         prefs.unregisterOnSharedPreferenceChangeListener(listener)
         prefs.write(STRING_KEY, STRING_KEY)
         assertNotEquals(STRING_KEY, keyOfChange)
-        assertNotEquals(prefs.read(STRING_KEY, EncryptedStorage.Prefs.INVALID_STRING), retrievedValue)
+        assertNotEquals(prefs.read(STRING_KEY, Prefs.INVALID_STRING), retrievedValue)
     }
 }

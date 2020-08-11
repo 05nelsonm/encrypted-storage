@@ -1,7 +1,6 @@
 package io.matthewnelson.encrypted_storage
 
 import android.content.SharedPreferences
-import io.matthewnelson.encrypted_storage.EncryptedStorage.Prefs
 import androidx.test.core.app.ApplicationProvider
 import org.junit.Before
 import org.junit.Test
@@ -243,5 +242,4 @@ class PrefsUnitTest {
         assertNotEquals(STRING_KEY, keyOfChange)
         assertNotEquals(prefs.read(STRING_KEY, Prefs.INVALID_STRING), retrievedValue)
     }
-
 }
