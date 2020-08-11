@@ -11,7 +11,7 @@
         <meta name="description" content="An Android library for creating encrypted Files and SharedPreferences.">
       
       
-        <link rel="canonical" href="https://05nelsonm.github.io/encrypted-storage/changelog/">
+        <link rel="canonical" href="https://encrypted-storage.matthewnelson.io/changelog/">
       
       
         <meta name="author" content="Matthew Nelson">
@@ -70,7 +70,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="https://05nelsonm.github.io/encrypted-storage" title="EncryptedStorage" class="md-header-nav__button md-logo" aria-label="EncryptedStorage">
+    <a href="https://encrypted-storage.matthewnelson.io" title="EncryptedStorage" class="md-header-nav__button md-logo" aria-label="EncryptedStorage">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -202,7 +202,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://05nelsonm.github.io/encrypted-storage" title="EncryptedStorage" class="md-nav__button md-logo" aria-label="EncryptedStorage">
+    <a href="https://encrypted-storage.matthewnelson.io" title="EncryptedStorage" class="md-nav__button md-logo" aria-label="EncryptedStorage">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -328,7 +328,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../encrypted-storage/io.matthewnelson.encrypted_storage/-encrypted-storage/" title="EncryptedStorage Docs" class="md-nav__link">
+    <a href="../encrypted-storage/io.matthewnelson.encrypted_storage/" title="EncryptedStorage Docs" class="md-nav__link">
       EncryptedStorage Docs
     </a>
   </li>
@@ -373,6 +373,13 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#version-200-2020-08-11" class="md-nav__link">
+    Version 2.0.0 (2020-08-11)
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#version-102-2020-06-20" class="md-nav__link">
@@ -428,6 +435,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#version-200-2020-08-11" class="md-nav__link">
+    Version 2.0.0 (2020-08-11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-102-2020-06-20" class="md-nav__link">
     Version 1.0.2 (2020-06-20)
   </a>
@@ -469,6 +483,27 @@
                 
                 
                 <h1 id="change-log">Change Log<a class="headerlink" href="#change-log" title="Permanent link">&para;</a></h1>
+<h2 id="version-200-2020-08-11">Version 2.0.0 (2020-08-11)<a class="headerlink" href="#version-200-2020-08-11" title="Permanent link">&para;</a></h2>
+<ul>
+<li>BugFix: Removes equal operator from methods that return <code>void</code><a href="https://github.com/05nelsonm/encrypted-storage/commit/bd98ec07f71dbe9155ad85a281ed0d13a86d3d1a">[bd98ec0]</a><ul>
+<li>Java projects were being returned <code>kotlin.Unit</code> which was causing errors.</li>
+</ul>
+</li>
+<li>Renamed the <code>File</code> class to <code>EFile</code> <a href="https://github.com/05nelsonm/encrypted-storage/commit/8d3c3bc05c7a383f3ce3f707e47d4e730e62b9a7">[8d3c3bc]</a></li>
+<li>Moved the <code>Prefs</code> and <code>EFile</code> classes to their own files instead of under <code>EncryptedStorage</code>:<ul>
+<li><a href="https://github.com/05nelsonm/encrypted-storage/commit/c010c180276417ef3b189309f8e3df1abc96c114">[c010c18]</a></li>
+<li><a href="https://github.com/05nelsonm/encrypted-storage/commit/d0d7b9be6759ddddaed8e01409fbb2b6feaaee13">[d0d7b9b]</a></li>
+</ul>
+</li>
+<li>Added <code>Throw</code> annotations to methods <a href="https://github.com/05nelsonm/encrypted-storage/commit/44f05bd8d288cba7612ca3607c3aa241c6e93115">[44f05bd]</a></li>
+<li>Added <code>JvmStatic</code> annotations to methods/variables <a href="https://github.com/05nelsonm/encrypted-storage/commit/15b41592c9168cb88964e1eea33df459b20369ec">[15b4159]</a></li>
+<li>Dependency version bumps:<ul>
+<li>gradle maven publish 11.1 -&gt; 12.0 <a href="https://github.com/05nelsonm/encrypted-storage/commit/8b4886821b36d18c6917c2e98860a707c07c7770">[8b48868]</a></li>
+<li>gradle 4.0.0 -&gt; 4.0.1 <a href="https://github.com/05nelsonm/encrypted-storage/commit/67034a3c3db0d97d5a00507a9ccd3a1c601b1791">[67034a3]</a></li>
+</ul>
+</li>
+<li>Added a new module for testing purposes, to fake the AndroidKeystore.</li>
+</ul>
 <h2 id="version-102-2020-06-20">Version 1.0.2 (2020-06-20)<a class="headerlink" href="#version-102-2020-06-20" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Removes <code>sealed</code> class modifier in lieu of a private constructor for inhibiting instantiation <a href="https://github.com/05nelsonm/encrypted-storage/commit/14e35dc1ed2043518606c8846540702e1c18a9dc">[14e35dc]</a></li>
@@ -502,7 +537,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../encrypted-storage/io.matthewnelson.encrypted_storage/-encrypted-storage/" title="EncryptedStorage Docs" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../encrypted-storage/io.matthewnelson.encrypted_storage/" title="EncryptedStorage Docs" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
