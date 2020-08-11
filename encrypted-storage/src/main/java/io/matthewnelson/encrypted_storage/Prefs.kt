@@ -132,6 +132,7 @@ class Prefs private constructor(val prefsName: String, private val context: Cont
      *
      * @return Map<String, *>
      * */
+    @Throws(NullPointerException::class)
     fun getAll(): Map<String, *> =
         prefs.all
 
