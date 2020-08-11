@@ -51,6 +51,7 @@ class Prefs private constructor(val prefsName: String, private val context: Cont
         const val INVALID_INT: Int = -1111111111
         const val INVALID_LONG: Long = -11111111111L
         const val INVALID_STRING: String = "INVALID_STRING"
+        @JvmStatic
         val INVALID_STRING_SET: Set<String> = setOf(INVALID_STRING)
 
         /**
@@ -62,6 +63,7 @@ class Prefs private constructor(val prefsName: String, private val context: Cont
          *
          * @return [Prefs] that uses encryption.
          * */
+        @JvmStatic
         fun createEncrypted(encryptedPrefsName: String, context: Context): Prefs =
             Prefs(
                 encryptedPrefsName,
@@ -79,6 +81,7 @@ class Prefs private constructor(val prefsName: String, private val context: Cont
          *
          * @return [Prefs] that **does not** use encryption.
          * */
+        @JvmStatic
         fun createUnencrypted(prefsName: String, context: Context): Prefs =
             Prefs(prefsName, context)
     }

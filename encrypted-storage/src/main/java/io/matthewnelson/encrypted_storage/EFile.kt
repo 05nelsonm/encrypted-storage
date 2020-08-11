@@ -26,6 +26,7 @@ class EFile private constructor(
         /**
          * Required fields only
          * */
+        @JvmStatic
         @Throws(GeneralSecurityException::class, IOException::class)
         fun createEncrypted(file: File, context: Context): EFile =
             EFile(file, context, null, null)
@@ -33,6 +34,7 @@ class EFile private constructor(
         /**
          * Required fields + custom keysetAlias
          * */
+        @JvmStatic
         @Throws(GeneralSecurityException::class, IOException::class)
         fun createEncrypted(file: File, context: Context, keysetAlias: String): EFile =
             EFile(file, context, keysetAlias, null)
@@ -40,6 +42,7 @@ class EFile private constructor(
         /**
          * Required fields + custom keysetPrefName
          * */
+        @JvmStatic
         @Throws(GeneralSecurityException::class, IOException::class)
         fun createEncrypted(file: File, keysetPrefName: String, context: Context): EFile =
             EFile(file, context, null, keysetPrefName)
@@ -58,6 +61,7 @@ class EFile private constructor(
          * @throws [java.security.GeneralSecurityException]  when a bad master key or keyset has been used
          * @throws [java.io.IOException] when the file already exists or is not available for writing
          * */
+        @JvmStatic
         @Throws(GeneralSecurityException::class, IOException::class)
         fun createEncrypted(
             file: File,
