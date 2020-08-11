@@ -333,9 +333,9 @@ class EncryptedStorage private constructor() {
     /**
      * Helper class for creating encrypted Files.
      *
-     * See [File.Companion.createEncrypted] for instantiation methods.
+     * See [EFile.Companion.createEncrypted] for instantiation methods.
      * */
-    class File private constructor(
+    class EFile private constructor(
         val file: java.io.File,
         context: Context,
         val keysetAlias: String?,
@@ -347,20 +347,20 @@ class EncryptedStorage private constructor() {
             /**
              * Required fields only
              * */
-            fun createEncrypted(file: java.io.File, context: Context): File =
-                File(file, context, null, null)
+            fun createEncrypted(file: java.io.File, context: Context): EFile =
+                EFile(file, context, null, null)
 
             /**
              * Required fields + custom keysetAlias
              * */
-            fun createEncrypted(file: java.io.File, context: Context, keysetAlias: String): File =
-                File(file, context, keysetAlias, null)
+            fun createEncrypted(file: java.io.File, context: Context, keysetAlias: String): EFile =
+                EFile(file, context, keysetAlias, null)
 
             /**
              * Required fields + custom keysetPrefName
              * */
-            fun createEncrypted(file: java.io.File, keysetPrefName: String, context: Context): File =
-                File(file, context, null, keysetPrefName)
+            fun createEncrypted(file: java.io.File, keysetPrefName: String, context: Context): EFile =
+                EFile(file, context, null, keysetPrefName)
 
             /**
              * Required: [file], [context]
@@ -371,7 +371,7 @@ class EncryptedStorage private constructor() {
              * @param [keysetAlias] String - **OPTIONAL** FIELD
              * @param [keysetPrefName] String - **OPTIONAL** FIELD
              *
-             * @return [EncryptedStorage.File]
+             * @return [EncryptedStorage.EFile]
              *
              * @throws [java.security.GeneralSecurityException]  when a bad master key or keyset has been used
              * @throws [java.io.IOException] when the file already exists or is not available for writing
@@ -381,8 +381,8 @@ class EncryptedStorage private constructor() {
                 context: Context,
                 keysetAlias: String,
                 keysetPrefName: String
-            ): File =
-                File(file, context, keysetAlias, keysetPrefName)
+            ): EFile =
+                EFile(file, context, keysetAlias, keysetPrefName)
         }
 
         private val encryptedFile = buildEncryptedFile(file, context, keysetAlias, keysetPrefName)
