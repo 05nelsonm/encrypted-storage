@@ -142,6 +142,7 @@ class Prefs private constructor(val prefsName: String, private val context: Cont
      *
      * @throws [ClassCastException]
      * */
+    @Throws(ClassCastException::class)
     fun read(key: String): Boolean? =
         if (contains(key))
             read(key, INVALID_BOOLEAN)
@@ -151,30 +152,35 @@ class Prefs private constructor(val prefsName: String, private val context: Cont
     /**
      * Boolean
      * */
+    @Throws(ClassCastException::class)
     fun read(key: String, returnIfInvalid: Boolean): Boolean =
         prefs.getBoolean(key, returnIfInvalid)
 
     /**
      * Float
      * */
+    @Throws(ClassCastException::class)
     fun read(key: String, returnIfInvalid: Float): Float =
         prefs.getFloat(key, returnIfInvalid)
 
     /**
      * Int
      * */
+    @Throws(ClassCastException::class)
     fun read(key: String, returnIfInvalid: Int): Int =
         prefs.getInt(key, returnIfInvalid)
 
     /**
      * Long
      * */
+    @Throws(ClassCastException::class)
     fun read(key: String, returnIfInvalid: Long): Long =
         prefs.getLong(key, returnIfInvalid)
 
     /**
      * Set<String>?
      * */
+    @Throws(ClassCastException::class)
     fun read(key: String, returnIfInvalid: Set<String>): Set<String>? =
         prefs.getStringSet(key, returnIfInvalid)
 
@@ -200,6 +206,7 @@ class Prefs private constructor(val prefsName: String, private val context: Cont
      *
      * @throws [ClassCastException]
      * */
+    @Throws(ClassCastException::class)
     fun read(key: String, returnIfInvalid: String): String? =
         prefs.getString(key, returnIfInvalid)
 

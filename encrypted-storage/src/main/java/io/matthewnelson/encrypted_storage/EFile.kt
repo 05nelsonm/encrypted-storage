@@ -6,6 +6,8 @@ import androidx.security.crypto.MasterKeys
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.io.IOException
+import java.security.GeneralSecurityException
 
 /**
  * Helper class for creating encrypted Files.
@@ -24,18 +26,21 @@ class EFile private constructor(
         /**
          * Required fields only
          * */
+        @Throws(GeneralSecurityException::class, IOException::class)
         fun createEncrypted(file: File, context: Context): EFile =
             EFile(file, context, null, null)
 
         /**
          * Required fields + custom keysetAlias
          * */
+        @Throws(GeneralSecurityException::class, IOException::class)
         fun createEncrypted(file: File, context: Context, keysetAlias: String): EFile =
             EFile(file, context, keysetAlias, null)
 
         /**
          * Required fields + custom keysetPrefName
          * */
+        @Throws(GeneralSecurityException::class, IOException::class)
         fun createEncrypted(file: File, keysetPrefName: String, context: Context): EFile =
             EFile(file, context, null, keysetPrefName)
 
@@ -53,6 +58,7 @@ class EFile private constructor(
          * @throws [java.security.GeneralSecurityException]  when a bad master key or keyset has been used
          * @throws [java.io.IOException] when the file already exists or is not available for writing
          * */
+        @Throws(GeneralSecurityException::class, IOException::class)
         fun createEncrypted(
             file: File,
             context: Context,
@@ -98,6 +104,7 @@ class EFile private constructor(
      * @throws [java.security.GeneralSecurityException] when a bad master key or keyset has been used
      * @throws [java.io.IOException] when the file already exists or is not available for writing
      * */
+    @Throws(GeneralSecurityException::class, IOException::class)
     fun openFileInput(): FileInputStream = encryptedFile.openFileInput()
 
     /**
@@ -112,5 +119,6 @@ class EFile private constructor(
      * @throws [java.security.GeneralSecurityException] when a bad master key or keyset has been used
      * @throws [java.io.IOException] when the file already exists or is not available for writing
      * */
+    @Throws(GeneralSecurityException::class, IOException::class)
     fun openFileOutput(): FileOutputStream = encryptedFile.openFileOutput()
 }
