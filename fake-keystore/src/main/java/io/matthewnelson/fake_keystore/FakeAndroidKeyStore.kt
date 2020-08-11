@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.matthewnelson.test_helpers
+package io.matthewnelson.fake_keystore
 
 import java.io.InputStream
 import java.io.OutputStream
@@ -31,6 +31,17 @@ import javax.crypto.KeyGenerator
 import javax.crypto.KeyGeneratorSpi
 import javax.crypto.SecretKey
 
+/**
+ * To use, add to your test:
+ *
+ * companion object {
+ *     @JvmStatic
+ *     @BeforeClass
+ *     fun beforeClass() {
+ *         FakeAndroidKeyStore.setup
+ *     }
+ * }
+ * */
 object FakeAndroidKeyStore {
 
     val setup by lazy {

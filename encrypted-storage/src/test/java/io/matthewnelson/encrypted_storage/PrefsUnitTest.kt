@@ -3,7 +3,7 @@ package io.matthewnelson.encrypted_storage
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.test.core.app.ApplicationProvider
-import io.matthewnelson.test_helpers.FakeAndroidKeyStore
+import io.matthewnelson.fake_keystore.FakeAndroidKeyStore
 import org.junit.Before
 import org.junit.BeforeClass
 import org.junit.Test
