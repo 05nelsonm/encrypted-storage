@@ -1,5 +1,8 @@
 # Change Log
 
+## Version 2.0.0 (2020-10-14)
+ - Bumps Dependencies [[e5f5aa5]](https://github.com/05nelsonm/encrypted-storage/commit/e5f5aa5095b900ae2557849b63a66c14a711879c)
+
 ## Version 2.0.0 (2020-08-11)
 
  - BugFix: Removes equal operator from methods that return `void`[[bd98ec0]](https://github.com/05nelsonm/encrypted-storage/commit/bd98ec07f71dbe9155ad85a281ed0d13a86d3d1a)
