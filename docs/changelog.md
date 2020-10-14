@@ -1,6 +1,6 @@
 # Change Log
 
-## Version 2.0.0 (2020-10-14)
+## Version 2.0.1 (2020-10-14)
  - Bumps Dependencies [[e5f5aa5]](https://github.com/05nelsonm/encrypted-storage/commit/e5f5aa5095b900ae2557849b63a66c14a711879c)
 
 ## Version 2.0.0 (2020-08-11)
